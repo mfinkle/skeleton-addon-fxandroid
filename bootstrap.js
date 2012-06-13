@@ -5,8 +5,7 @@ const Cu = Components.utils;
 Cu.import("resource://gre/modules/Services.jsm");
 
 function isNativeUI() {
-  let appInfo = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
-  return (appInfo.ID == "{aa3c5121-dab2-40e2-81ca-7ea25febc110}");
+  return (Services.appinfo.ID == "{aa3c5121-dab2-40e2-81ca-7ea25febc110}");
 }
 
 function showToast(aWindow) {
@@ -83,17 +82,15 @@ var windowListener = {
 };
 
 function startup(aData, aReason) {
-  let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
-
   // Load into any existing windows
-  let windows = wm.getEnumerator("navigator:browser");
+  let windows = Services.wm.getEnumerator("navigator:browser");
   while (windows.hasMoreElements()) {
     let domWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
     loadIntoWindow(domWindow);
   }
 
   // Load into any new windows
-  wm.addListener(windowListener);
+  Serivces.wm.addListener(windowListener);
 }
 
 function shutdown(aData, aReason) {
@@ -102,10 +99,8 @@ function shutdown(aData, aReason) {
   if (aReason == APP_SHUTDOWN)
     return;
 
-  let wm = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator);
-
   // Stop listening for new windows
-  wm.removeListener(windowListener);
+  Services.wm.removeListener(windowListener);
 
   // Unload from any existing windows
   let windows = wm.getEnumerator("navigator:browser");
