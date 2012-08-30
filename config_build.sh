@@ -9,4 +9,5 @@ ROOT_FILES="bootstrap.js"
 ROOT_DIRS=
 BEFORE_BUILD=
 AFTER_BUILD=
-
+PUSH_TO_DEVICE=1
+ANDROID_APP_ID=org.mozilla.firefox
