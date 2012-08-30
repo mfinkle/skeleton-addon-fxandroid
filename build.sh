@@ -37,6 +37,8 @@ ROOT_FILES=        # put these files in root of xpi (space separated list of lea
 ROOT_DIRS=         # ...and these directories       (space separated list)
 BEFORE_BUILD=      # run this before building       (bash command)
 AFTER_BUILD=       # ...and this after the build    (bash command)
+PUSH_TO_DEVICE=    # push add-on to Android device after build. Assumes adb is installed (1/0)
+ANDROID_APP_ID=    # Firefox for Android app id (e.g. org.mozilla.firefox, org.mozilla.fennec)
 
 if [ -z $1 ]; then
   . ./config_build.sh
@@ -127,3 +129,11 @@ echo "Done!"
 
 $AFTER_BUILD
 
+if [ $PUSH_TO_DEVICE = 1 ]; then
+  adb push ../$APP_NAME.xpi /sdcard/$APP_NAME.xpi
+  adb shell am start -a android.intent.action.VIEW \
+                     -c android.intent.category.DEFAULT \
+                     -d file:///mnt/sdcard/$APP_NAME.xpi \
+                     -n $ANDROID_APP_ID/.App
+  echo "Pushed $APP_NAME.xpi to $ANDROID_APP_ID"
+fi
