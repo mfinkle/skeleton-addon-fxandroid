@@ -69,11 +69,13 @@ mkdir --parents --verbose $TMP_DIR/chrome
 # generate the JAR file, excluding CVS, SVN, and temporary files
 JAR_FILE=$TMP_DIR/chrome/$APP_NAME.jar
 echo "Generating $JAR_FILE..."
+rm -f files ; touch files
 for CHROME_SUBDIR in $CHROME_PROVIDERS; do
   find $CHROME_SUBDIR \( -path '*CVS*' -o -path '*.svn*' \) -prune -o -type f -print | grep -v \~ >> files
 done
 
 zip -0 -r $JAR_FILE -@ < files
+echo $JAR_FILE > files
 # The following statement should be used instead if you don't wish to use the JAR file
 #cp --verbose --parents `cat files` $TMP_DIR/chrome
 
@@ -88,8 +90,8 @@ done
 
 # Copy other files to the root of future XPI.
 for ROOT_FILE in $ROOT_FILES install.rdf chrome.manifest; do
-  cp --verbose $ROOT_FILE $TMP_DIR
   if [ -f $ROOT_FILE ]; then
+    cp --verbose $ROOT_FILE $TMP_DIR
     echo $ROOT_FILE >> files
   fi
 done
@@ -130,7 +132,7 @@ echo "Done!"
 $AFTER_BUILD
 
 if [ $PUSH_TO_DEVICE = 1 ]; then
-  adb push ../$APP_NAME.xpi /sdcard/$APP_NAME.xpi
+  adb push ./$APP_NAME.xpi /sdcard/$APP_NAME.xpi
   adb shell am start -a android.intent.action.VIEW \
                      -c android.intent.category.DEFAULT \
                      -d file:///mnt/sdcard/$APP_NAME.xpi \
