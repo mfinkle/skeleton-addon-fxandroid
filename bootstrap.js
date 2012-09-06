@@ -90,7 +90,7 @@ function startup(aData, aReason) {
   }
 
   // Load into any new windows
-  Serivces.wm.addListener(windowListener);
+  Services.wm.addListener(windowListener);
 }
 
 function shutdown(aData, aReason) {
@@ -103,7 +103,7 @@ function shutdown(aData, aReason) {
   Services.wm.removeListener(windowListener);
 
   // Unload from any existing windows
-  let windows = wm.getEnumerator("navigator:browser");
+  let windows = Services.wm.getEnumerator("navigator:browser");
   while (windows.hasMoreElements()) {
     let domWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
     unloadFromWindow(domWindow);
