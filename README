@@ -2,12 +2,12 @@ Skeleton for an Add-on in Firefox on Android
 ============================================
 
 This code supplies the basic bits and pieces needed to build a simple,
-restartless add-on for Firefox on Android, which uses a new native widget UI.
+restartless add-on for Firefox on Android, which uses a native widget UI.
 Since Firefox on Android does not use XUL for the UI, building an add-on is a
-little different.
+little different than building an add-on for desktop Firefox.
 
 For more information about building mobile add-ons, please see:
-https://developer.mozilla.org/en/Extensions/Firefox_on_Android
+https://developer.mozilla.org/en-US/Add-ons/Firefox_for_Android
 
 Using the Skeleton
 ==================

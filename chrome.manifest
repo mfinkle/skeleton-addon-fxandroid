@@ -1,0 +1,3 @@
+content    skeleton          content/
+locale     skeleton en-US    locale/en-US/
+locale     skeleton fr       locale/fr/

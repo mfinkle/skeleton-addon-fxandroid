@@ -148,11 +148,7 @@ echo "Done!"
 $AFTER_BUILD
 
 if [ $PUSH_TO_DEVICE = 1 ]; then
-<<<<<<< HEAD
-  adb push ../$APP_NAME.xpi /sdcard/$APP_NAME.xpi
-=======
   adb push ./$APP_NAME.xpi /sdcard/$APP_NAME.xpi
->>>>>>> a3700155e14958529c355535f6b89289496482d8
   adb shell am start -a android.intent.action.VIEW \
                      -c android.intent.category.DEFAULT \
                      -d file:///mnt/sdcard/$APP_NAME.xpi \
