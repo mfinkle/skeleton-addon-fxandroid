@@ -7,7 +7,7 @@ Since Firefox on Android does not use XUL for the UI, building an add-on is a
 little different.
 
 For more information about building mobile add-ons, please see:
-https://developer.mozilla.org/en/Extensions/Firefox_on_Android
+https://developer.mozilla.org/en-US/Add-ons/Firefox_for_Android
 
 Using the Skeleton
 ==================
