@@ -24,7 +24,7 @@ function showToast(aWindow) {
 }
 
 function showDoorhanger(aWindow) {
-  buttons = [
+  let buttons = [
     {
       label: "Button 1",
       callback: function() {
