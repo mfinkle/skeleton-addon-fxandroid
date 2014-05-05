@@ -1,5 +1,4 @@
-Skeleton for an Add-on in Firefox on Android
-============================================
+# Skeleton for an Add-on in Firefox on Android
 
 This code supplies the basic bits and pieces needed to build a simple,
 restartless add-on for Firefox on Android, which uses a native widget UI.
@@ -9,19 +8,18 @@ little different than building an add-on for desktop Firefox.
 For more information about building mobile add-ons, please see:
 https://developer.mozilla.org/en-US/Add-ons/Firefox_for_Android
 
-Using the Skeleton
-==================
+## Using the Skeleton
 
-Step 1: Edit the install.rdf
-  * Please change the ALL CAPS areas with text specific to your add-on
+Step 1: Edit the `install.rdf`
+  * Please change the ALL CAPS areas with text specific to your add-on.
 
-Step 2: Add code to bootstrap.js
+Step 2: Add code to `bootstrap.js`
   * The current code adds some menus, doorhangers and context menus that don't
     do very much right now.
 
-Step 3: Edit config_build.sh
-  * If you add any additional files, make sure you add them to config_build.sh
-    See build.sh for more details
+Step 3: Edit `config_build.sh`
+  * If you add any additional files, make sure you add them to `config_build.sh`.
+    See `build.sh` for more details.
 
-Step 4: run ./build.sh
-  * This creates the XPI
+Step 4: run `./build.sh`
+  * This creates the XPI and optionally pushes it to your device.
