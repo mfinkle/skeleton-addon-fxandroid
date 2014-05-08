@@ -14,12 +14,10 @@ Step 1: Edit the `install.rdf`
   * Please change the ALL CAPS areas with text specific to your add-on.
 
 Step 2: Add code to `bootstrap.js`
-  * The current code adds some menus, doorhangers and context menus that don't
-    do very much right now.
+  * The current code adds some menus, doorhangers and context menus that don't do very much right now.
 
-Step 3: Edit `config_build.sh`
-  * If you add any additional files, make sure you add them to `config_build.sh`.
-    See `build.sh` for more details.
+Step 3: Edit `build`
+  * Update this file to specify a file name for your XPI, as well which version of Firefox you want to use to test the XPI file.
 
-Step 4: run `./build.sh`
-  * This creates the XPI and optionally pushes it to your device.
+Step 4: Run `./build`
+  * This creates the XPI and optionally pushes it to your device. You must have [adb](http://developer.android.com/tools/help/adb.html) installed for the push step to work.
