@@ -21,3 +21,18 @@ Step 3: Edit `build`
 
 Step 4: Run `./build`
   * This creates the XPI and optionally pushes it to your device. You must have [adb](http://developer.android.com/tools/help/adb.html) installed for the push step to work.
+
+## Using volo
+
+You can use [volo](http://volojs.org/) to quickly bootstrap your add-on from this template.
+
+volo requires [node](http://nodejs.org/) to run. To install volo:
+
+    npm install -g volo
+
+After installing volo, to create a new directory for your add-on, run:
+
+    volo create youraddon https://github.com/leibovic/skeleton-addon-fxandroid/archive/master.zip
+
+This will create a new directory `youraddon`, which holds all the files for your add-on.
+
