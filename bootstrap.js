@@ -1,19 +1,30 @@
-const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
+const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
 Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+
+// An example of how to create a string bundle for localization.
+XPCOMUtils.defineLazyGetter(this, "Strings", function() {
+  return Services.strings.createBundle("chrome://skeleton/locale/skeleton.properties");
+});
+
+// An example of how to import a helper module.
+XPCOMUtils.defineLazyGetter(this, "Helper", function() {
+  let sandbox = {};
+  Services.scriptloader.loadSubScript("chrome://skeleton/content/helper.js", sandbox);
+  return sandbox["Helper"];
+});
 
 function isNativeUI() {
   return (Services.appinfo.ID == "{aa3c5121-dab2-40e2-81ca-7ea25febc110}");
 }
 
 function showToast(aWindow) {
-  aWindow.NativeWindow.toast.show("Showing you a toast", "short");
+  aWindow.NativeWindow.toast.show(Strings.GetStringFromName("toast.message"), "short");
 }
 
 function showDoorhanger(aWindow) {
-  buttons = [
+  let buttons = [
     {
       label: "Button 1",
       callback: function() {
